@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Container} from '@material-ui/core';
+import FormCadastro from './components/FormCadastro/FormCadastro.jsx'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+   <Container component="article" maxWidth='sm'>
+     <FormCadastro aoEnviar={aoEnviarForm}  validaCpf={validaCPF} />
+   </Container> 
+  );}
+
+  function aoEnviarForm(dados){
+    console.log(dados);
+  }
+
+
+  function validaCPF(cpf){
+    if(cpf.length != 11){
+      return {valido:false,message:"CPF deve possuir 11 digitos"}
+    }else{
+      return{valido:true,message:""}
+    }
+  }
 
 export default App;
